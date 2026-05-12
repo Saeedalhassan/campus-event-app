@@ -18,7 +18,7 @@ router.post('/register', async (req, res) => {
 
     const result = await pool.query(
       'INSERT INTO users (name, email, password_hash, role, verification_token, is_verified) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id, name, email, role',
-      [name, email, hash, role || 'student', verificationToken, false]
+      [name, email, hash, role || 'student', verificationToken, true]
     );
     const user = result.rows[0];
 
