@@ -19,6 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     loadEvents();
+    // eslint-disable-next-line
   }, [category]);
 
   const loadEvents = async () => {

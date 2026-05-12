@@ -33,6 +33,7 @@ export default function EventAnalytics() {
         toast.error('Not authorized to view analytics');
         navigate('/dashboard');
       });
+      // eslint-disable-next-line
   }, [id, user]);
 
   if (!analytics || !event) return (
