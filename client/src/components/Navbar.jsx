@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
-  const { darkMode, toggleTheme, colors } = useTheme();
+  const { darkMode, toggleTheme,} = useTheme();
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [scrolled, setScrolled] = useState(false);
