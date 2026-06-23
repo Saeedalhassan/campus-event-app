@@ -18,7 +18,7 @@ export default function MobileNav() {
 
   return (
     <>
-      <nav style={{ ...styles.nav, background: '#1a1a2e' }}>
+      <nav style={{ ...styles.nav, background: '#0d1f0d' }}>
         <Link to="/" style={styles.brand}>🎓 CampusEvents-UDS</Link>
         <div style={styles.rightSide}>
           {user && <NotificationBell />}
@@ -34,7 +34,7 @@ export default function MobileNav() {
       {menuOpen && (
         <>
           <div style={styles.overlay} onClick={() => setMenuOpen(false)} />
-          <div style={{ ...styles.drawer, background: '#1a1a2e' }}>
+          <div style={{ ...styles.drawer, background: '#0d1f0d' }}>
             <div style={styles.drawerHeader}>
               {user ? (
                 <div style={styles.userInfo}>

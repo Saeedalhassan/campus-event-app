@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const toggleTheme = () => setDarkMode(!darkMode);
 
@@ -11,14 +11,16 @@ export const ThemeProvider = ({ children }) => {
     darkMode,
     toggleTheme,
     colors: {
-      background: darkMode ? '#0f0f1a' : '#f5f5f5',
-      card: darkMode ? '#1a1a2e' : '#ffffff',
-      text: darkMode ? '#ffffff' : '#333333',
+      background: darkMode ? '#0a0a0a' : '#f5f5f5',
+      card: darkMode ? '#1a1a1a' : '#ffffff',
+      text: darkMode ? '#ffffff' : '#1a1a1a',
       subtext: darkMode ? '#aaaaaa' : '#666666',
-      border: darkMode ? '#333355' : '#dddddd',
-      navbar: darkMode ? '#0a0a15' : '#1a1a2e',
-      accent: '#e94560',
-      input: darkMode ? '#2a2a3e' : '#ffffff',
+      border: darkMode ? '#2a2a2a' : '#dddddd',
+      navbar: darkMode ? '#0d1f0d' : '#1B5E20',
+      accent: '#2E7D32',
+      accentLight: '#4CAF50',
+      input: darkMode ? '#2a2a2a' : '#ffffff',
+      hero: darkMode ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0.5)',
     }
   };
 
