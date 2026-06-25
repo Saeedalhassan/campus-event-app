@@ -26,10 +26,15 @@ export default function HeroSection() {
               {user ? '➕ Create Event' : '🚀 Get Started'}
             </button>
             <button style={styles.secondaryBtn} onClick={() => {
-              document.getElementById('events-section').scrollIntoView({ behavior: 'smooth' });
-            }}>
-              📅 Browse Events
-            </button>
+  const section = document.getElementById('events-section');
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    window.location.href = '/';
+  }
+}}>
+  📅 Browse Events
+</button>
             <button style={styles.outlineBtn} onClick={() => navigate('/about')}>
               ℹ️ About
             </button>

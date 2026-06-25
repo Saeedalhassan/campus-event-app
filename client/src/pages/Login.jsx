@@ -1,94 +1,131 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { loginUser, registerUser } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
+import { toast } from 'react-toastify';
 
-export default function HeroSection() {
-  const { user } = useAuth();
+export default function Login() {
+  const [isLogin, setIsLogin] = useState(true);
+  const [form, setForm] = useState({ name: '', email: '', password: '', role: 'student' });
+  const { login } = useAuth();
+  const { colors } = useTheme();
   const navigate = useNavigate();
 
+  const handleSubmit = async () => {
+    try {
+      const res = isLogin ? await loginUser(form) : await registerUser(form);
+      login(res.data.token, res.data.user);
+      toast.success('Welcome!');
+      navigate('/');
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Something went wrong');
+    }
+  };
+
   return (
-    <div style={styles.hero}>
-      <div style={styles.overlay}>
-        <div style={styles.content}>
+    <div style={{
+      minHeight: '100vh',
+      backgroundImage: `linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(27,94,32,0.75) 100%), url(https://res.cloudinary.com/difjtbnve/image/upload/v1782196731/uds-campus_pywq83.jpg)`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '1rem'
+    }}>
+      <div style={{ ...styles.card, background: colors.card }}>
+        <div style={styles.logoSection}>
           <img
             src="https://res.cloudinary.com/difjtbnve/image/upload/v1782196514/uds-logo_ewm8w2.jpg"
             alt="UDS Logo" style={styles.logo} />
-          <div style={styles.badge}>🎓 University of Development Studies</div>
-          <h1 style={styles.title}>
-            Discover & Join
-            <span style={styles.highlight}> Campus Events</span>
-          </h1>
-          <p style={styles.subtitle}>
-            Stay connected with everything happening at UDS.
-            Find events, RSVP, and never miss out again.
+          <h2 style={{ color: colors.text, margin: '0.5rem 0 0' }}>CampusEvents UDS</h2>
+          <p style={{ color: '#4CAF50', margin: '0.2rem 0 1rem', fontSize: '0.85rem' }}>
+            University of Development Studies
           </p>
-          <div style={styles.buttons}>
-            <button style={styles.primaryBtn} onClick={() => navigate(user ? '/create-event' : '/login')}>
-              {user ? '➕ Create Event' : '🚀 Get Started'}
-            </button>
-            <button style={styles.secondaryBtn} onClick={() => {
-              document.getElementById('events-section').scrollIntoView({ behavior: 'smooth' });
-            }}>
-              📅 Browse Events
-            </button>
-            <button style={styles.outlineBtn} onClick={() => navigate('/about')}>
-              ℹ️ About
-            </button>
-          </div>
-          <div style={styles.stats}>
-            <div style={styles.stat}>
-              <strong style={styles.statNum}>100+</strong>
-              <span style={styles.statLabel}>Events</span>
-            </div>
-            <div style={styles.statDivider} />
-            <div style={styles.stat}>
-              <strong style={styles.statNum}>500+</strong>
-              <span style={styles.statLabel}>Students</span>
-            </div>
-            <div style={styles.statDivider} />
-            <div style={styles.stat}>
-              <strong style={styles.statNum}>10+</strong>
-              <span style={styles.statLabel}>Categories</span>
-            </div>
-          </div>
+          <p style={{ color: colors.subtext, margin: 0 }}>
+            {isLogin ? 'Welcome back!' : 'Create your account'}
+          </p>
         </div>
+
+        {!isLogin && (
+          <input placeholder="Full Name"
+            style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+            value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
+        )}
+        <input placeholder="Email" type="email"
+          style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+          value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
+        <input placeholder="Password" type="password"
+          style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+          value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} />
+        {!isLogin && (
+          <select
+            style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+            value={form.role} onChange={e => setForm({ ...form, role: e.target.value })}>
+            <option value="student">Student</option>
+            <option value="organizer">Organizer</option>
+          </select>
+        )}
+        <button style={styles.btn} onClick={handleSubmit}>
+          {isLogin ? '🔑 Login' : '✅ Register'}
+        </button>
+        {isLogin && (
+          <p style={{ ...styles.toggle, color: colors.subtext, fontSize: '0.85rem' }}
+            onClick={() => navigate('/forgot-password')}>
+            Forgot password?
+          </p>
+        )}
+        <p style={{ ...styles.toggle, color: '#4CAF50' }}
+          onClick={() => setIsLogin(!isLogin)}>
+          {isLogin ? "Don't have an account? Register" : "Already have an account? Login"}
+        </p>
       </div>
     </div>
   );
 }
 
 const styles = {
-  hero: {
-    backgroundImage: `url(https://res.cloudinary.com/difjtbnve/image/upload/v1782196731/uds-campus_pywq83.jpg)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundAttachment: 'fixed',
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    position: 'relative'
+  card: {
+    padding: '2rem',
+    borderRadius: '15px',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+    width: '100%',
+    maxWidth: '400px'
   },
-  overlay: {
-    position: 'absolute',
-    top: 0, left: 0, right: 0, bottom: 0,
-    background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(27,94,32,0.75) 100%)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '2rem'
+  logoSection: { textAlign: 'center', marginBottom: '1.5rem' },
+  logo: {
+    width: '80px',
+    height: '80px',
+    borderRadius: '50%',
+    border: '3px solid #4CAF50',
+    objectFit: 'cover'
   },
-  content: { maxWidth: '700px', textAlign: 'center', animation: 'fadeIn 1s ease' },
-  logo: { width: '100px', height: '100px', borderRadius: '50%', border: '4px solid #4CAF50', marginBottom: '1rem', objectFit: 'cover' },
-  badge: { display: 'inline-block', background: 'rgba(46,125,50,0.4)', border: '1px solid #4CAF50', color: '#4CAF50', padding: '0.4rem 1rem', borderRadius: '20px', fontSize: '0.85rem', marginBottom: '1.5rem', fontWeight: 'bold' },
-  title: { fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#ffffff', fontWeight: '800', lineHeight: '1.2', marginBottom: '1rem' },
-  highlight: { color: '#4CAF50', display: 'block' },
-  subtitle: { fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' },
-  buttons: { display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3rem' },
-  primaryBtn: { padding: '0.9rem 2rem', background: '#2E7D32', color: '#fff', border: 'none', borderRadius: '30px', fontSize: '1rem', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 4px 15px rgba(46,125,50,0.5)' },
-  secondaryBtn: { padding: '0.9rem 2rem', background: 'transparent', color: '#fff', border: '2px solid #fff', borderRadius: '30px', fontSize: '1rem', fontWeight: 'bold', cursor: 'pointer' },
-  outlineBtn: { padding: '0.9rem 2rem', background: 'transparent', color: '#4CAF50', border: '2px solid #4CAF50', borderRadius: '30px', fontSize: '1rem', fontWeight: 'bold', cursor: 'pointer' },
-  stats: { display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' },
-  stat: { display: 'flex', flexDirection: 'column', alignItems: 'center' },
-  statNum: { fontSize: '2rem', color: '#4CAF50', fontWeight: '800' },
-  statLabel: { color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' },
-  statDivider: { width: '1px', height: '40px', background: 'rgba(255,255,255,0.2)' }
+  input: {
+    width: '100%',
+    padding: '0.9rem',
+    margin: '0.4rem 0',
+    borderRadius: '8px',
+    border: '1px solid',
+    fontSize: '1rem',
+    boxSizing: 'border-box'
+  },
+  btn: {
+    width: '100%',
+    padding: '0.9rem',
+    background: '#2E7D32',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '8px',
+    fontSize: '1rem',
+    cursor: 'pointer',
+    marginTop: '0.5rem',
+    fontWeight: 'bold'
+  },
+  toggle: {
+    textAlign: 'center',
+    cursor: 'pointer',
+    marginTop: '1rem',
+    fontSize: '0.9rem'
+  }
 };
