@@ -44,57 +44,89 @@ export default function CreateEvent() {
   };
 
   return (
-    <div style={{ ...styles.page, background: colors.background }}>
-      <div style={{ ...styles.card, background: colors.card }}>
-        <h2 style={{ color: colors.text, marginBottom: '1rem' }}>📅 Create New Event</h2>
+    <div style={styles.page}>
+      <div style={styles.overlay}>
+        <div style={{ ...styles.card, background: colors.card }}>
+          <div style={styles.cardHeader}>
+            <img
+              src="https://res.cloudinary.com/difjtbnve/image/upload/v1782196514/uds-logo_ewm8w2.jpg"
+              alt="UDS" style={styles.headerLogo} />
+            <div>
+              <h2 style={{ color: colors.text, margin: 0 }}>📅 Create New Event</h2>
+              <p style={{ color: '#4CAF50', margin: '0.2rem 0 0', fontSize: '0.85rem' }}>
+                CampusEvents UDS
+              </p>
+            </div>
+          </div>
 
-        <label style={{ ...styles.label, color: colors.text }}>Event Title *</label>
-        <input style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
-          value={form.title} onChange={e => setForm({ ...form, title: e.target.value })}
-          placeholder="Enter event title" />
+          <label style={{ ...styles.label, color: colors.text }}>Event Title *</label>
+          <input style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+            value={form.title} onChange={e => setForm({ ...form, title: e.target.value })}
+            placeholder="Enter event title" />
 
-        <label style={{ ...styles.label, color: colors.text }}>Location *</label>
-        <input style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
-          value={form.location} onChange={e => setForm({ ...form, location: e.target.value })}
-          placeholder="Enter location" />
+          <label style={{ ...styles.label, color: colors.text }}>Location *</label>
+          <input style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+            value={form.location} onChange={e => setForm({ ...form, location: e.target.value })}
+            placeholder="Enter location" />
 
-        <label style={{ ...styles.label, color: colors.text }}>Start Time *</label>
-        <input type="datetime-local" style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
-          value={form.start_time} onChange={e => setForm({ ...form, start_time: e.target.value })} />
+          <label style={{ ...styles.label, color: colors.text }}>Start Time *</label>
+          <input type="datetime-local"
+            style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+            value={form.start_time} onChange={e => setForm({ ...form, start_time: e.target.value })} />
 
-        <label style={{ ...styles.label, color: colors.text }}>End Time</label>
-        <input type="datetime-local" style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
-          value={form.end_time} onChange={e => setForm({ ...form, end_time: e.target.value })} />
+          <label style={{ ...styles.label, color: colors.text }}>End Time</label>
+          <input type="datetime-local"
+            style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+            value={form.end_time} onChange={e => setForm({ ...form, end_time: e.target.value })} />
 
-        <label style={{ ...styles.label, color: colors.text }}>Category</label>
-        <select style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
-          value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}>
-          {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
-        </select>
+          <label style={{ ...styles.label, color: colors.text }}>Category</label>
+          <select style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+            value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}>
+            {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
 
-        <label style={{ ...styles.label, color: colors.text }}>Event Image</label>
-        <input type="file" accept="image/*" style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
-          onChange={handleImageChange} />
-        {preview && <img src={preview} alt="preview" style={styles.preview} />}
+          <label style={{ ...styles.label, color: colors.text }}>Event Image</label>
+          <input type="file" accept="image/*"
+            style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border }}
+            onChange={handleImageChange} />
+          {preview && <img src={preview} alt="preview" style={styles.preview} />}
 
-        <label style={{ ...styles.label, color: colors.text }}>Description</label>
-        <textarea style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border, height: '120px', resize: 'vertical' }}
-          value={form.description} onChange={e => setForm({ ...form, description: e.target.value })}
-          placeholder="Describe your event..." />
+          <label style={{ ...styles.label, color: colors.text }}>Description</label>
+          <textarea
+            style={{ ...styles.input, background: colors.input, color: colors.text, borderColor: colors.border, height: '120px', resize: 'vertical' }}
+            value={form.description} onChange={e => setForm({ ...form, description: e.target.value })}
+            placeholder="Describe your event..." />
 
-        <button style={styles.btn} onClick={handleSubmit} disabled={uploading}>
-          {uploading ? '⏳ Uploading...' : '🚀 Publish Event'}
-        </button>
+          <button style={styles.btn} onClick={handleSubmit} disabled={uploading}>
+            {uploading ? '⏳ Uploading...' : '🚀 Publish Event'}
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
 const styles = {
-  page: { minHeight: '100vh', padding: '1rem' },
-  card: { maxWidth: '600px', margin: '0 auto', padding: '1.5rem', borderRadius: '15px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' },
+  page: {
+    minHeight: '100vh',
+    backgroundImage: `url(https://res.cloudinary.com/difjtbnve/image/upload/v1782196731/uds-campus_pywq83.jpg)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed'
+  },
+  overlay: {
+    minHeight: '100vh',
+    background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(27,94,32,0.75) 100%)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    padding: '2rem 1rem'
+  },
+  card: { maxWidth: '600px', width: '100%', padding: '1.5rem', borderRadius: '15px', boxShadow: '0 8px 32px rgba(0,0,0,0.3)' },
+  cardHeader: { display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid rgba(76,175,80,0.3)' },
+  headerLogo: { width: '50px', height: '50px', borderRadius: '50%', border: '2px solid #4CAF50', objectFit: 'cover' },
   label: { display: 'block', marginBottom: '0.3rem', fontWeight: 'bold', marginTop: '1rem', fontSize: '0.9rem' },
   input: { width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid', fontSize: '1rem', boxSizing: 'border-box' },
   preview: { width: '100%', borderRadius: '8px', marginTop: '0.5rem', maxHeight: '200px', objectFit: 'cover' },
-  btn: { width: '100%', padding: '1rem', background: '#e94560', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '1rem', cursor: 'pointer', marginTop: '1.5rem', fontWeight: 'bold' }
+  btn: { width: '100%', padding: '1rem', background: '#2E7D32', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '1rem', cursor: 'pointer', marginTop: '1.5rem', fontWeight: 'bold' }
 };
