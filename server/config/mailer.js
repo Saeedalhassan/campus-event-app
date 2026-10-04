@@ -1,8 +1,10 @@
-const SibApiV3Sdk = require('@getbrevo/brevo');
+const SibApiV3Sdk = require('sib-api-v3-sdk');
 require('dotenv').config();
 
+const defaultClient = SibApiV3Sdk.ApiClient.instance;
+const apiKey = defaultClient.authentications['api-key'];
+apiKey.apiKey = process.env.BREVO_API_KEY;
 const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-apiInstance.authentications['apiKey'].apiKey = process.env.BREVO_API_KEY;
 
 const FROM_EMAIL = process.env.EMAIL_USER || 'alhassansaeed2005@gmail.com';
 const FROM_NAME = 'CampusEvents UDS';
