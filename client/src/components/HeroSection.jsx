@@ -12,7 +12,7 @@ export default function HeroSection() {
           <img
             src="https://res.cloudinary.com/difjtbnve/image/upload/v1782196514/uds-logo_ewm8w2.jpg"
             alt="UDS Logo" style={styles.logo} />
-          <div style={styles.badge}>🎓 University of Development Studies</div>
+          <div style={styles.badge}>🎓 University for Development Studies</div>
           <h1 style={styles.title}>
             Discover & Join
             <span style={styles.highlight}> Campus Events</span>
