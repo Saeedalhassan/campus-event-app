@@ -4,40 +4,92 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Campus Events is a platform for discovering and managing campus events."
-    />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="theme-color" content="#0d1f0d" />
+    <meta name="description" content="CampusEvents UDS - The official campus events platform for University for Development Studies" />
+    <meta name="keywords" content="UDS, University for Development Studies, campus events, Ghana" />
+    <meta name="author" content="Saeed Alhassan" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <!-- PWA -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Open Graph for sharing -->
+    <meta property="og:title" content="CampusEvents UDS" />
+    <meta property="og:description" content="Discover and join campus events at University for Development Studies" />
+    <meta property="og:image" content="https://res.cloudinary.com/difjtbnve/image/upload/v1791271173/uds-logo_3_msnqsy.png" />
+    <meta property="og:url" content="https://campusevents-uds.vercel.app" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CampusEvents UDS" />
+    <meta name="twitter:description" content="Discover and join campus events at University of Development Studies" />
+    <meta name="twitter:image" content="https://res.cloudinary.com/difjtbnve/image/upload/v1791271173/uds-logo_3_msnqsy.png" />
+
     <title>CampusEvents UDS</title>
+
+    <style>
+      body {
+        margin: 0;
+        background: #0a0a0a;
+      }
+      #splash {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: #0d1f0d;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+      #splash img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid #4CAF50;
+        animation: pulse 1.5s infinite;
+      }
+      #splash h1 {
+        color: #fff;
+        margin: 1rem 0 0.3rem;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 1.5rem;
+      }
+      #splash p {
+        color: #4CAF50;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 0.9rem;
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(76,175,80,0.4); }
+        70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(76,175,80,0); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(76,175,80,0); }
+      }
+    </style>
   </head>
   <body>
+    <div id="splash">
+      <img src="%PUBLIC_URL%/logo192.png" alt="CampusEvents UDS" />
+      <h1>CampusEvents UDS</h1>
+      <p>University of Development Studies</p>
+    </div>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const splash = document.getElementById('splash');
+          if (splash) {
+            splash.style.opacity = '0';
+            setTimeout(() => splash.remove(), 500);
+          }
+        }, 2000);
+      });
+    </script>
   </body>
 </html>
