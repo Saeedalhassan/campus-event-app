@@ -44,7 +44,7 @@ const sendEventReminder = async (toEmail, userName, eventTitle, eventLocation, e
       </div>
       <div style="background: #0d1f0d; padding: 15px; text-align: center;">
         <p style="color: #4CAF50; margin: 0;">CampusEvents UDS — University of Development Studies</p>
-        <p style="color: rgba(255,255,255,0.6); margin: 0.3rem 0 0; font-size: 0.85rem;">"Knowledge for Development"</p>
+        <p style="color: rgba(255,255,255,0.6); margin: 0.3rem 0 0; font-size: 0.85rem;">"Knowledge for Service"</p>
       </div>
     </div>
   `);
@@ -77,8 +77,8 @@ const sendWelcomeEmail = async (toEmail, userName) => {
         </div>
       </div>
       <div style="background: #0d1f0d; padding: 15px; text-align: center;">
-        <p style="color: #4CAF50; margin: 0;">CampusEvents UDS — University of Development Studies</p>
-        <p style="color: rgba(255,255,255,0.6); margin: 0.3rem 0 0; font-size: 0.85rem;">"Knowledge for Development"</p>
+        <p style="color: #4CAF50; margin: 0;">CampusEvents UDS — University for Development Studies</p>
+        <p style="color: rgba(255,255,255,0.6); margin: 0.3rem 0 0; font-size: 0.85rem;">"Knowledge for Service"</p>
       </div>
     </div>
   `);
@@ -109,7 +109,7 @@ const sendVerificationEmail = async (toEmail, userName, token) => {
       </div>
       <div style="background: #0d1f0d; padding: 15px; text-align: center;">
         <p style="color: #4CAF50; margin: 0;">CampusEvents UDS — University For Development Studies</p>
-        <p style="color: rgba(255,255,255,0.6); margin: 0.3rem 0 0; font-size: 0.85rem;">"Knowledge for Development"</p>
+        <p style="color: rgba(255,255,255,0.6); margin: 0.3rem 0 0; font-size: 0.85rem;">"Knowledge for Service"</p>
       </div>
     </div>
   `);

@@ -74,7 +74,7 @@ export default function About() {
                 Full Stack Developer
               </p>
               <p style={{ color: colors.subtext, margin: '0 0 0.3rem' }}>
-                🎓 University of Development Studies
+                🎓 University for Development Studies
               </p>
               <p style={{ color: colors.subtext, margin: '0 0 0.3rem' }}>
                 💻 Computer Science Student
@@ -152,13 +152,13 @@ export default function About() {
             src="https://res.cloudinary.com/difjtbnve/image/upload/v1782196514/uds-logo_ewm8w2.jpg"
             alt="UDS Logo" style={styles.footerLogo} />
           <p style={{ color: '#fff', margin: '0.5rem 0' }}>
-            Made with ❤️ by <strong style={{ color: '#4CAF50' }}>Saeed Alhassan</strong> for UDS
+            Made with love by <strong style={{ color: '#4CAF50' }}>Saeed Alhassan</strong> for UDS
           </p>
           <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', margin: '0.5rem 0' }}>
             © 2026 CampusEvents UDS. All rights reserved.
           </p>
           <p style={{ color: '#4CAF50', fontSize: '0.85rem', margin: '0.5rem 0' }}>
-            "Knowledge for Development"
+            "Knowledge for Service"
           </p>
           <button style={styles.homeBtn} onClick={() => navigate('/')}>
             🏠 Go to Home
