@@ -70,7 +70,7 @@ export default function ImageGallery({ eventId, organizerId }) {
             onChange={e => setCaption(e.target.value)}
           />
           <button style={styles.uploadBtn} onClick={handleUpload} disabled={uploading}>
-            {uploading ? '⏳ Uploading...' : '📤 Add to Gallery'}
+            {uploading ? '⏳ Uploading...' : 'Add to Gallery'}
           </button>
         </div>
       )}

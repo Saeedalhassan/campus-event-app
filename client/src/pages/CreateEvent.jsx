@@ -52,7 +52,7 @@ export default function CreateEvent() {
               src="https://res.cloudinary.com/difjtbnve/image/upload/v1782196514/uds-logo_ewm8w2.jpg"
               alt="UDS" style={styles.headerLogo} />
             <div>
-              <h2 style={{ color: colors.text, margin: 0 }}>📅 Create New Event</h2>
+              <h2 style={{ color: colors.text, margin: 0 }}>Create New Event</h2>
               <p style={{ color: '#4CAF50', margin: '0.2rem 0 0', fontSize: '0.85rem' }}>
                 CampusEvents UDS
               </p>
@@ -98,7 +98,7 @@ export default function CreateEvent() {
             placeholder="Describe your event..." />
 
           <button style={styles.btn} onClick={handleSubmit} disabled={uploading}>
-            {uploading ? '⏳ Uploading...' : '🚀 Publish Event'}
+            {uploading ? '⏳ Uploading...' : 'Publish Event'}
           </button>
         </div>
       </div>

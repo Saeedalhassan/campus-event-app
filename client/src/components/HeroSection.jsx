@@ -12,7 +12,7 @@ export default function HeroSection() {
           <img
             src="https://res.cloudinary.com/difjtbnve/image/upload/v1782196514/uds-logo_ewm8w2.jpg"
             alt="UDS Logo" style={styles.logo} />
-          <div style={styles.badge}>🎓 University for Development Studies</div>
+          <div style={styles.badge}>University for Development Studies</div>
           <h1 style={styles.title}>
             Discover & Join
             <span style={styles.highlight}> Campus Events</span>
@@ -23,7 +23,7 @@ export default function HeroSection() {
           </p>
           <div style={styles.buttons}>
             <button style={styles.primaryBtn} onClick={() => navigate(user ? '/create-event' : '/login')}>
-              {user ? '➕ Create Event' : '🚀 Get Started'}
+              {user ? 'Create Event' : 'Get Started'}
             </button>
             <button style={styles.secondaryBtn} onClick={() => {
   const section = document.getElementById('events-section');
@@ -33,10 +33,10 @@ export default function HeroSection() {
     window.location.href = '/';
   }
 }}>
-  📅 Browse Events
+  Browse Events
 </button>
             <button style={styles.outlineBtn} onClick={() => navigate('/about')}>
-              ℹ️ About
+              About
             </button>
           </div>
           <div style={styles.stats}>

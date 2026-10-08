@@ -19,7 +19,7 @@ export default function MobileNav() {
   return (
     <>
       <nav style={{ ...styles.nav, background: '#0d1f0d' }}>
-        <Link to="/" style={styles.brand}>🎓 CampusEvents-UDS</Link>
+        <Link to="/" style={styles.brand}>CampusEvents-UDS</Link>
         <div style={styles.rightSide}>
           {user && <NotificationBell />}
           <button onClick={toggleTheme} style={styles.iconBtn}>

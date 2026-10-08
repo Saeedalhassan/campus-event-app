@@ -61,7 +61,7 @@ export default function Home() {
       <div id="events-section" style={styles.eventsSection}>
         <div style={styles.sectionHeader}>
           <h2 style={{ color: colors.text, fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
-            🔥 Upcoming Events
+            Upcoming Events
           </h2>
           <p style={{ color: colors.subtext }}>Find and join events happening at UDS</p>
         </div>

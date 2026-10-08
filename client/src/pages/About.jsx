@@ -28,7 +28,7 @@ export default function About() {
 
         {/* APP DESCRIPTION */}
         <div style={{ ...styles.card, background: colors.card }}>
-          <h2 style={{ color: colors.text, marginBottom: '1rem' }}>🎓 About The App</h2>
+          <h2 style={{ color: colors.text, marginBottom: '1rem' }}>About The App</h2>
           <p style={{ color: colors.subtext, lineHeight: '1.8' }}>
             CampusEvents UDS is a comprehensive campus event management platform designed
             specifically for the University for Development Studies. It connects students,
@@ -56,7 +56,7 @@ export default function About() {
 
         {/* DEVELOPER SECTION */}
         <div style={{ ...styles.card, background: colors.card }}>
-          <h2 style={{ color: colors.text, marginBottom: '1.5rem' }}>👨‍💻 Meet The Developer</h2>
+          <h2 style={{ color: colors.text, marginBottom: '1.5rem' }}>Meet The Developer</h2>
           <div style={styles.developerCard}>
             <div style={styles.devAvatarContainer}>
               <img

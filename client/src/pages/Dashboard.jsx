@@ -33,7 +33,7 @@ export default function Dashboard() {
   return (
     <div style={{ ...styles.page, background: colors.background }}>
       <div style={styles.container}>
-        <h2 style={{ color: colors.text, marginBottom: '0.5rem' }}>Welcome, {user.name} 👋</h2>
+        <h2 style={{ color: colors.text, marginBottom: '0.5rem' }}>Welcome, {user.name}</h2>
 
         <div style={styles.statsRow}>
           <div style={{ ...styles.statBox, background: colors.card }}>
